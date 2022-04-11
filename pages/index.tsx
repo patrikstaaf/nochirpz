@@ -1,14 +1,31 @@
-import type { NextPage } from 'next';
-import Content from '../components/Content';
-// import Image from 'next/image'
+import type { GetStaticProps } from 'next';
+import { questions } from '../data/questions';
+import { QuestionsData } from '../types/questionsdata';
+import Layout from '../components/Layout';
+import Header from '../components/Header';
+import Form from '../components/Form';
+import Questions from '../components/Questions';
 
-const Home: NextPage = () => {
-  return (
-    <div className='flex min-h-screen flex-col items-center justify-center py-2'>
-      <h1>Chirpzzz</h1>
-      <Content />
-    </div>
-  );
+type Props = {
+  questions: QuestionsData[];
 };
 
-export default Home;
+export default function Home({ questions }: Props) {
+  return (
+    <>
+      <Layout>
+        <Header />
+        <Form />
+        <Questions questions={questions} />
+      </Layout>
+    </>
+  );
+}
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  return {
+    props: {
+      questions,
+    },
+  };
+};

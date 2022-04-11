@@ -1,8 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-
-type ResponseData = {
-  message: string;
-};
+import { ResponseData } from '../../types/responsedata';
 
 export default async function handler(
   req: NextApiRequest,

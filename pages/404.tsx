@@ -1,11 +1,10 @@
-import type { NextPage } from 'next';
+import Nextlink from '../components/Nextlink';
 
-const NotFound: NextPage = () => {
+export default function NotFound() {
   return (
-    <div>
-      <h1>404</h1>
+    <div className='flex min-h-screen flex-col items-center justify-center'>
+      <h1 className='my-4 text-xl font-semibold'>404 - Page don't exist.</h1>
+      <Nextlink href='/' text='Return home' />
     </div>
   );
-};
-
-export default NotFound;
+}

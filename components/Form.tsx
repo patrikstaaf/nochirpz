@@ -33,14 +33,12 @@ export default function Form() {
     setLoading(false);
   };
   return (
-    <div className=''>
-      <hr className='my-5' />
-      <h2 className='font-title text-3xl font-semibold md:text-3xl'>
-        Remind me
-      </h2>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor='email'>Your email</label>
-        <div className='mt-5'>
+    <div className='w-full rounded-lg'>
+      <form onSubmit={handleSubmit} id='form'>
+        <label htmlFor='email' className='sr-only'>
+          Your email
+        </label>
+        <div className='flex'>
           <input
             onChange={onChange}
             value={email}
@@ -48,22 +46,30 @@ export default function Form() {
             type='email'
             placeholder='your@email.com'
             required
-            className='input input-primary input-bordered'
+            className='text-md min-w-[80px] grow rounded-lg border p-2'
           />
-          {!loading && (
-            <button type='submit' className=''>
-              Subscribe
-            </button>
-          )}
-          {loading && (
-            <button type='submit' className=''>
-              Subscribing..
-            </button>
-          )}
+          <div className='group relative'>
+            <div className='absolute  ml-2 h-12 w-24 rounded-lg bg-gradient-to-r from-pink-600 to-purple-600 opacity-50 blur-md transition duration-200 group-hover:opacity-100 group-hover:duration-200'></div>
+            {!loading && (
+              <button
+                type='submit'
+                className='relative ml-2 h-12 w-24 rounded-lg bg-white text-black'
+              >
+                Subscribe
+              </button>
+            )}
+            {loading && (
+              <button
+                type='submit'
+                className='relative ml-2 h-12 w-24 rounded-lg bg-white text-black'
+              >
+                Saving...
+              </button>
+            )}
+          </div>
         </div>
-        <div>{message ? message : 'Recieve a reminder once a year.'}</div>
+        <div>{message ? message : 'No spam. Unsubscribe at any time.'}</div>
       </form>
-      <hr className='my-5' />
     </div>
   );
 }

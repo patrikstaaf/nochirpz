@@ -1,18 +1,15 @@
+import { PageLayout } from '../types/pagelayout';
 import Pagehead from './Pagehead';
-import Navbar from './Navbar';
 import Footer from './Footer';
-
-type PageLayout = {
-  children: React.ReactNode;
-};
 
 export default function Layout({ children }: PageLayout) {
   return (
-    <>
-      <Pagehead />
-      <Navbar />
-      <main>{children}</main>
-      <Footer />
-    </>
+    <div>
+      <div className='mx-auto max-w-xl p-3 antialiased selection:bg-indigo-200 sm:px-0 sm:py-3'>
+        <Pagehead />
+        <main>{children}</main>
+        <Footer />
+      </div>
+    </div>
   );
 }
